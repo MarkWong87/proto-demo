@@ -26,7 +26,7 @@ class AdController extends Controller
         $impData['imp_id'] = '1';
         $impData['adspace_id'] = 'xx';
         $impData['banner'] = $bannerData;
-        $impData['ad_type']=\AdType::ACFUN_CAROUSEL_FIGURE;
+        $impData['ad_type']=\AdType::DEMO_CAROUSEL_FIGURE;
 
         //Geo参数
         $geoData['lat'] = 1;
@@ -60,7 +60,7 @@ class AdController extends Controller
         //App参数
         $appData['id'] = 1;
         $appData['name'] = 'A站';
-        $appData['domain'] = 'http://www.acfun.cn';
+        $appData['domain'] = 'http://www.DEMO.cn';
         $appData['ver'] = '2.3.1';
         $appData['bundle'] = 'ss';
         $appData['privacypolicy'] = 0;

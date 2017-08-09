@@ -1,11 +1,11 @@
 syntax = "proto3";
 enum AdType {
-    ACFUN_ANDROID_SPLASH = 0; //安卓启动闪屏1620*2432(2轮播随机展示)
-    ACFUN_IOS_SPLASH = 1;     //ios启动闪频1125*1719(2轮播图随机展示)
-    ACFUN_CAROUSEL_FIGURE= 2;        //1125*435
-    ACFUN_EACH_PARTITION= 3;       //1035*240
-    ACFUN_OTHER_REGION = 4;         //504*282
-    ACFUN_SEARCH = 5;               //1035*390
+    DEMO_ANDROID_SPLASH = 0; //安卓启动闪屏1620*2432(2轮播随机展示)
+    DEMO_IOS_SPLASH = 1;     //ios启动闪频1125*1719(2轮播图随机展示)
+    DEMO_CAROUSEL_FIGURE= 2;        //1125*435
+    DEMO_EACH_PARTITION= 3;       //1035*240
+    DEMO_OTHER_REGION = 4;         //504*282
+    DEMO_SEARCH = 5;               //1035*390
 
 };
 
