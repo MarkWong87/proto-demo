@@ -1,0 +1,141 @@
+syntax = "proto3";
+enum AdType {
+    ACFUN_ANDROID_SPLASH = 0; //安卓启动闪屏1620*2432(2轮播随机展示)
+    ACFUN_IOS_SPLASH = 1;     //ios启动闪频1125*1719(2轮播图随机展示)
+    ACFUN_CAROUSEL_FIGURE= 2;        //1125*435
+    ACFUN_EACH_PARTITION= 3;       //1035*240
+    ACFUN_OTHER_REGION = 4;         //504*282
+    ACFUN_SEARCH = 5;               //1035*390
+
+};
+
+message BidRequest{
+    string request_id = 1;
+    string api_version = 2;
+    Imp imp = 3;
+    Device device = 4;
+    User user = 5;
+    App app = 6;
+};
+message Imp{
+    message Banner{
+        uint32 width = 1;
+        uint32 height =2;
+    }
+    string imp_id = 1;
+    string adspace_id = 2;
+    Banner banner = 3;
+    AdType ad_type =4;
+    string adspace_type =5;
+
+};
+message Geo {
+    double lat = 1;
+    double lon = 2;
+    string country = 3;
+    string region = 4;
+    string city = 5;
+    string type = 6;
+};
+message Device {
+    enum ConnectionType {
+        Honeycomb = 0;
+        WIFI = 1;
+        UNKNOWN = 2;
+        NT_2G = 3;
+        NT_4G = 4;
+    };
+    enum DeviceType {
+        PHONE = 0;
+        TABLET = 1;
+    };
+    bool dnt = 1;
+    string ua = 2;
+    string ip = 3;
+    Geo geo = 4;
+    string device_id = 5;
+    string device_id_md5 = 6;
+    string carrier = 7;
+    string language = 8;
+    string make = 9;
+    string model = 10;
+    string os = 11;
+    string osv = 12;
+    bool js = 13;
+    ConnectionType connection_type = 14;
+    DeviceType device_type = 15;
+};
+message User{
+     string id = 1;
+     string buyer_id = 2;
+     string yob = 3;
+     string  keywords = 4;
+     string geo = 5;
+     string gender =6;
+};
+message App{
+     string id = 1;
+     string name = 2;
+     string domain =3;
+     string ver = 4;
+     string bundle =5;
+     uint32 privacypolicy = 6;
+     uint32 paid = 7;
+};
+message BidResponse {
+    string request_id = 1;
+    repeated SeatBid seatbids = 2;
+    uint64 error_code = 3;
+};
+message SeatBid{
+    repeated Bid bid = 1;
+    string seat = 2;  // 广告来源dsp识别
+};
+message Bid{
+    string  id = 1;
+    string  imp_id =2;
+    uint32  price = 3;
+    uint64  adid = 4;
+    MaterialMeta material = 5;
+};
+message MaterialMeta {
+    message ImageMeta {
+        string description = 1;  // 应用下载额外的描述
+        uint32 width = 2;        // 大图小图的问题
+        uint32 height = 3;
+        string url = 4;          // 图片的外链, 常用格式
+        string urls = 5;         //组图的外链，三个url
+        uint64 date_timestamp = 6;          //头条开屏广告投放的日期时间
+        uint64 start_timestamp = 7;        //头条开屏广告投放的生效时间
+        uint64 end_timestamp = 8;        //头条开屏广告投放的失效时间
+    };
+
+    message ExternalMeta {
+        string url = 1;
+    };
+
+    message AndroidApp {
+        string app_name = 1;
+        string download_url = 2;
+
+    };
+    message IosApp {
+        string app_name = 1;
+        string download_url = 2;
+
+    };
+    AdType ad_type = 1;
+    string nurl = 2;             // winnotice url
+    string title = 3;            // 除detail_banner之外必须
+    string source = 4;           // 来源, 默认dsp名
+    ImageMeta image_banner = 5;
+    ExternalMeta external = 6;   // 对于落地页广告才有
+    AndroidApp android_app = 7;  // android应用下载才有
+    IosApp ios_app = 8;          // ios应用下载才有
+    string show_url = 9;         // 展现监测
+    string click_url = 10;       // 点击监测
+};
+
+
+
+

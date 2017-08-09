@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message SearchRequest {
+  string query = 1;
+  int32 page_number = 2;
+  int32 result_per_page = 3;
+}
+message App {
+     string name = 5;
+     string keywords = 10;
+
+}
+
+message Adslot {
+     string id = 1;
+     Banner banner = 2;
+     message Banner {
+         uint32 width = 1;
+         uint32 height = 2;
+     };
+
+}
