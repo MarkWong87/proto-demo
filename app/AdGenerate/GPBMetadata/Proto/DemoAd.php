@@ -4,7 +4,7 @@
 
 namespace App\AdGenerate\GPBMetadata\Proto;
 
-class AcfunAd
+class DemoAd
 {
     public static $is_initialized = false;
 
